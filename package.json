@@ -11,12 +11,14 @@
     "db:studio": "npx drizzle-kit studio"
   },
   "dependencies": {
+    "@clerk/nextjs": "^5.5.2",
     "@neondatabase/serverless": "^0.9.5",
     "drizzle-orm": "^0.33.0",
     "next": "14.2.9",
     "pg": "^8.12.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "daisyui": "^4.12.10",
