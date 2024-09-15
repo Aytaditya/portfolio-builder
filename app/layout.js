@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from './components/Navbar'
+import { ToastContainer } from "react-toastify";
 
 
 const geistSans = localFont({
@@ -30,8 +31,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div data-theme="sunset" className="h-screen">
-        <Navbar/>
+        {/* <Navbar/> */}
         {children}
+        <ToastContainer/>
         </div>
       </body>
     </html>

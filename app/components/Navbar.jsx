@@ -13,8 +13,8 @@ const Navbar = () => {
         <div>
             <div className="navbar">
                 <div className="flex-1 cursor-pointer">
-                    <a className=" ml-3 text-white font-bold text-2xl mr-2 cursor-pointer">Cre8 AI</a>
-                    <img src="/logo.svg" alt="Logo" className='w-[50px] h-[50px] cursor-pointer' />
+                    <a href='/' className=" ml-3 text-white font-bold text-2xl mr-2 cursor-pointer">Cre8 AI</a>
+                    <img src="/robot.png" alt="Logo" className='w-[50px] h-[50px] cursor-pointer' />
                 </div>
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1 mr-3">

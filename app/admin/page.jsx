@@ -6,6 +6,7 @@ import { useUser } from "@clerk/nextjs"
 import { eq } from "drizzle-orm"
 import {useRouter} from 'next/navigation'
 import { useEffect } from "react"
+import Navbar from "../components/Navbar"
 
 const page = () => {
 
@@ -32,6 +33,7 @@ const page = () => {
   }
   return (
     <div>
+      
       hii
     </div>
   )
