@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div data-theme="sunset" className="">
+        <div data-theme="sunset" className="bg-[#0202029d]">
         {/* <Navbar/> */}
         {children}
         <ToastContainer/>

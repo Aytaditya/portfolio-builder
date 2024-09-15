@@ -8,3 +8,108 @@
     font-family: "EB Garamond", serif;
   }
 
+  @keyframes rain {
+    to {
+      transform: translateY(100vh);
+    }
+  }
+  
+  .rain {
+    position: fixed; /* Ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .rain-drop {
+    position: absolute;
+    background: linear-gradient(to bottom, #5e57ed, #e35481);
+    width: 3px; /* Increased width */
+    height: 15px; /* Increased height */
+    opacity: 0.7;
+    animation: rain linear infinite; /* Continuous animation */
+  }
+  
+  .rain-drop:nth-child(1) {
+    left: 10%;
+    animation-duration: 3s; /* Slower rain speed */
+  }
+  
+  .rain-drop:nth-child(2) {
+    left: 20%;
+    animation-duration: 3.5s; /* Slower rain speed */
+  }
+  
+  .rain-drop:nth-child(3) {
+    left: 30%;
+    animation-duration: 4s; /* Slower rain speed */
+  }
+
+  @keyframes bubble-float {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+  }
+  
+  .bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+    background: rgba(0, 0, 0, 0.1); /* Optional: Light background to make bubbles more visible */
+  }
+  
+  /* Keyframes for bubble floating effect */
+  @keyframes bubble-float {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh);
+      opacity: 0;
+    }
+  }
+  
+  /* Style for individual bubbles */
+  .bubble {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    width: 50px; /* Adjust size */
+    height: 50px; /* Adjust size */
+    animation: bubble-float linear infinite;
+    opacity: 0.6;
+  }
+  
+  /* Randomize bubble positions and animation durations */
+  .bubble:nth-child(1) {
+    left: 10%;
+    animation-duration: 12s;
+    animation-delay: 0s;
+  }
+  
+  .bubble:nth-child(2) {
+    left: 20%;
+    animation-duration: 15s;
+    animation-delay: 2s;
+  }
+  
+  .bubble:nth-child(3) {
+    left: 30%;
+    animation-duration: 18s;
+    animation-delay: 4s;
+  }

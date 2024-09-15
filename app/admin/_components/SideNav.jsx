@@ -29,7 +29,7 @@ const SideNav = () => {
     return (
         <>
 
-            <div className='p-4 h-screen  bg-[#00000084]'>
+            <div className='p-4 h-screen  bg-gray-900'>
                 <div>
                     <img src="/robot.png" alt="Logo" className='pt-0 mb-16' />
                 </div>

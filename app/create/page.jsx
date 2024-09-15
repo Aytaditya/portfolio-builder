@@ -6,86 +6,95 @@ import 'react-toastify/dist/ReactToastify.css';
 import { db } from '@/utils';
 import { userInfo } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
-import { eq } from "drizzle-orm"
-const {useRouter} = require('next/navigation');
-import Navbar from '../components/Navbar'
+import { eq } from "drizzle-orm";
+const { useRouter } = require('next/navigation');
+import Navbar from '../components/Navbar';
 
 const Page = () => {
     const [username, setUsername] = useState('');
-    const {user}=useUser();
-    const router=useRouter();
+    const { user } = useUser();
+    const router = useRouter();
 
-
-    useEffect(()=>{
+    useEffect(() => {
         if (user && user.primaryEmailAddress) {
-          checkUser();
+            checkUser();
         }
-    },[user])
+    }, [user]);
 
-    // cheking if user already exist in database
-    const checkUser=async()=>{
+    // Checking if user already exists in database
+    const checkUser = async () => {
         console.log("Checking user email: ", user?.primaryEmailAddress?.emailAddress);
-        const result=await db.select().from(userInfo)
-        .where(eq(userInfo.email,user?.primaryEmailAddress?.emailAddress))
-    
-        console.log(result)
-    
-        if(result.length>0){
-          router.push('/admin')
+        const result = await db.select().from(userInfo)
+            .where(eq(userInfo.email, user?.primaryEmailAddress?.emailAddress));
+
+        console.log(result);
+
+        if (result.length > 0) {
+            router.push('/admin');
         }
-      }
+    };
 
-    const handleCreate = async() => {
+    const handleCreate = async () => {
         if (username.length === 0) {
-            //console.log('Username is required');
-
-            toast.error('Username is required',{
+            toast.error('Username is required', {
                 position: "top-right",
             });
             return;
         }
         if (username.length > 10) {
-            //console.log('Username should be less than 10 characters');
-            toast.error('Username should be less than 10 characters',{
+            toast.error('Username should be less than 10 characters', {
                 position: "top-right",
             });
             return;
         }
 
         // Check if username already exists
-        const check=await db.select().from(userInfo)
-        .where(eq(userInfo.username,username.replace(' ','')))
-        if(check.length>0){
-            toast.error('Username already exists',{
+        const check = await db.select().from(userInfo)
+            .where(eq(userInfo.username, username.replace(' ', '')));
+        if (check.length > 0) {
+            toast.error('Username already exists', {
                 position: "top-right",
             });
             return;
         }
 
+        const result = await db.insert(userInfo)
+            .values({
+                name: user?.fullName,
+                email: user?.primaryEmailAddress?.emailAddress,
+                username: username.replace(' ', '')
+            });
 
-        const result=await db.insert(userInfo)
-        .values({
-            name:user?.fullName,
-            email:user?.primaryEmailAddress?.emailAddress,
-            username:username.replace(' ','')
-        })
-
-        console.log(result)
-        toast.success('User created successfully',{
+        console.log(result);
+        toast.success('User created successfully', {
             position: "top-right",
         });
 
         router.push('/admin');
 
         setUsername('');
-
-
-        
     };
 
     return (
         <>
             <Navbar />
+
+            {/* Floating Bubbles Background */}
+            <div className="bubbles">
+                {[...Array(20)].map((_, index) => (
+                    <div
+                        key={index}
+                        className="bubble"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            width: `${Math.random() * 40 + 20}px`,
+                            height: `${Math.random() * 40 + 20}px`,
+                            animationDuration: `${Math.random() * 10 + 10}s`,
+                            animationDelay: `${Math.random() * 10}s`,
+                        }}
+                    />
+                ))}
+            </div>
 
             {/* Animated Heading */}
             <motion.h1
@@ -98,7 +107,7 @@ const Page = () => {
                 <span className='text-[#5f58e2] mx-2'>Portfolio</span> Here 🖼️
             </motion.h1>
 
-            <div className='flex h-screen w-full bg-[#121C22]'>
+            <div className='flex h-screen w-full '>
                 {/* Left part */}
                 <motion.div
                     className='flex-1 flex overflow-hidden relative justify-center items-center z-10 bg-noise'
