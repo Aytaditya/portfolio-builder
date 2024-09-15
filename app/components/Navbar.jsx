@@ -11,7 +11,7 @@ import {
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar  ">
+            <div className="navbar">
                 <div className="flex-1 cursor-pointer">
                     <a className=" ml-3 text-white font-bold text-2xl mr-2 cursor-pointer">Cre8 AI</a>
                     <img src="/logo.svg" alt="Logo" className='w-[50px] h-[50px] cursor-pointer' />
