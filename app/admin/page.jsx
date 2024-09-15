@@ -7,6 +7,8 @@ import { eq } from "drizzle-orm"
 import {useRouter} from 'next/navigation'
 import { useEffect } from "react"
 import Navbar from "../components/Navbar"
+import FormComponent from "./_components/FormComponent"
+import Preview from "./_components/Preview"
 
 const page = () => {
 
@@ -32,9 +34,15 @@ const page = () => {
     }
   }
   return (
-    <div>
-      
-      hii
+    <div className="p-5">
+      <div className="grid grid:cols-1 lg:grid-cols-3  ">
+      <div className="col-span-2">
+      <FormComponent/>
+      </div>
+      <div>
+        <Preview/>
+      </div>
+    </div>
     </div>
   )
 }

@@ -27,10 +27,14 @@ export default function RootLayout({ children }) {
    
     <ClerkProvider>
     <html lang="en">
+    <head>
+        
+          <link rel="icon" href="/robot.png" type="image/png" />
+        </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div data-theme="sunset" className="h-screen">
+        <div data-theme="sunset" className="">
         {/* <Navbar/> */}
         {children}
         <ToastContainer/>
