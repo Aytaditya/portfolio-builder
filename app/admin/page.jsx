@@ -1,7 +1,7 @@
 "use client"
 
-import { db } from "@/utils"
-import { userInfo } from "@/utils/schema"
+import { db } from "../../utils"
+import { userInfo } from "../../utils/schema"
 import { useUser } from "@clerk/nextjs"
 import { eq } from "drizzle-orm"
 import {useRouter} from 'next/navigation'

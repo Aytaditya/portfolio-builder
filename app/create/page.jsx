@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { db } from '@/utils';
+import { db } from '../../utils';
 import { userInfo } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
 import { eq } from "drizzle-orm";
@@ -81,16 +81,16 @@ const Page = () => {
 
             {/* Floating Bubbles Background */}
             <div className="bubbles">
-                {[...Array(20)].map((_, index) => (
+                {[...Array(30)].map((_, index) => (
                     <div
                         key={index}
                         className="bubble"
                         style={{
                             left: `${Math.random() * 100}%`,
-                            width: `${Math.random() * 40 + 20}px`,
-                            height: `${Math.random() * 40 + 20}px`,
-                            animationDuration: `${Math.random() * 10 + 10}s`,
-                            animationDelay: `${Math.random() * 10}s`,
+                            width: `${Math.random() * 60 + 40}px`, // Adjust size
+                            height: `${Math.random() * 60 + 40}px`, // Adjust size
+                            animationDuration: `${Math.random() * 10 + 8}s`, // Adjust frequency
+                            animationDelay: `${Math.random() * 5}s`, // Adjust delay
                         }}
                     />
                 ))}
@@ -98,7 +98,7 @@ const Page = () => {
 
             {/* Animated Heading */}
             <motion.h1
-                className='flex text-center text-4xl pt-3 pb-2 items-center justify-center text-white font-bold tracking-tight uppercase'
+                className='flex text-center text-4xl pt-3 pb-2 items-center justify-center text-white font-bold tracking-tight font-enrich'
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: 'easeInOut' }}

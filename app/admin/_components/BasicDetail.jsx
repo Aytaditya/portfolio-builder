@@ -1,15 +1,17 @@
-import { db } from '@/utils';
-import { userInfo } from '@/utils/schema';
+import {db} from '../../../utils'
+import { userInfo } from '../../../utils/schema';
 import { useUser } from '@clerk/nextjs';
 import { Camera } from 'lucide-react';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { eq } from 'drizzle-orm';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
+import { UserDetailContext } from '../../_context/UserDetailContext'
 
 const BasicDetail = () => {
     const { user } = useUser();
+    const {userDetail,setUserDetail}=useContext(UserDetailContext)
 
     let timeoutId;
     const onInputChange = (e, fieldName) => {
@@ -26,6 +28,10 @@ const BasicDetail = () => {
             }
         }, 1000);
     };
+
+
+    
+    
 
     return (
         <motion.div
@@ -53,6 +59,7 @@ const BasicDetail = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
+                    defaultValue={userDetail?.name}
                 />
             </div>
             <motion.textarea
@@ -62,6 +69,7 @@ const BasicDetail = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
+                defaultValue={userDetail?.bio}
             />
         </motion.div>
     );

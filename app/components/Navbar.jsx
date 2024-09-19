@@ -19,7 +19,7 @@ const Navbar = () => {
                 <div className="flex-none">
                     <ul className="menu menu-horizontal px-1 mr-3">
                         <SignedOut>
-                            <SignInButton className="bg-[#544ddd] rounded-xl p-3 font-bold text-[18px] text-white px-4 " />
+                            <SignInButton className="bg-[#544ddd] rounded-xl p-3 font-bold text-[18px] text-white px-4  " />
                         </SignedOut>
                         <SignedIn>
                             <UserButton />
@@ -32,3 +32,6 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+// bg-glass text-white rounded-xl p-3 font-semibold cursor-pointer border border-gray-500 shadow-md shadow-white

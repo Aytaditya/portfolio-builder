@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",   // Ensures the root directory is set
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"]  // Maps "@/..." to the root directory
     }
   }
 }

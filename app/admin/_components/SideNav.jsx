@@ -35,7 +35,7 @@ const SideNav = () => {
                 </div>
                 {menuList.map(menu => (
                     <>
-                        <div key={menu.id} className='py-4 p-2 bg-[#5f58e2] text-white rounded-lg flex items-center justify-center mb-5 tooltip-secondary tooltip tooltip-right cursor-pointer '
+                        <div key={menu.id} className='py-4 p-2 bg-[#5f58e2] text-white rounded-lg flex items-center justify-center mb-5 tooltip-accent tooltip tooltip-right cursor-pointer hover:bg-[#e13fd9] hover:scale-110 transition-all ease-in-out duration-300  '
                             data-tip={menu.name}>
                             <menu.icon className='' />
 
