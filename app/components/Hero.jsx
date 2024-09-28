@@ -29,6 +29,13 @@ const Hero = () => {
                     />
                 ))}
             </div>
+            <div className='flex gap-3'>
+            <div className='bg-gray-800 p-1 px-3 hover:bg-gray-900 rounded-full text-white'>The ultimate SASS Platform</div>
+            {/* <div className='bg-gray-800 p-1 px-3 hover:bg-gray-900 rounded-full text-white'>Easy to use</div> */}
+            <div className='bg-gray-800 p-1 px-3 hover:bg-gray-900 rounded-full text-white'>Saves time and money</div>
+            <div className='bg-gray-800 p-1 px-3 hover:bg-gray-900 rounded-full text-white'>Tracks your profile visits</div>
+            <div className='bg-gray-800 p-1 px-3 hover:bg-gray-900 rounded-full text-white'>10+ themes available</div>
+            </div>
             <h1 className="font-bold text-5xl text-center text-gray-300 font-enrich">
                 <span className="text-[#5e57ed]">Create your dream portfolio effortlessly:</span> personalized portfolio and management tools at your fingertips for no cost.
             </h1>

@@ -77,10 +77,10 @@ const Page = () => {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
 
             {/* Floating Bubbles Background */}
-            <div className="bubbles">
+            {/* <div className="bubbles">
                 {[...Array(30)].map((_, index) => (
                     <div
                         key={index}
@@ -94,80 +94,102 @@ const Page = () => {
                         }}
                     />
                 ))}
-            </div>
-
-            {/* Animated Heading */}
-            <motion.h1
-                className='flex text-center text-4xl pt-3 pb-2 items-center justify-center text-white font-bold tracking-tight font-enrich'
-                initial={{ opacity: 0, y: -50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: 'easeInOut' }}
-            >
-                Register your
-                <span className='text-[#5f58e2] mx-2'>Portfolio</span> Here 🖼️
-            </motion.h1>
-
-            <div className='flex h-screen w-full '>
-                {/* Left part */}
-                <motion.div
-                    className='flex-1 flex overflow-hidden relative justify-center items-center z-10 bg-noise'
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, ease: 'easeInOut' }}
-                >
-                    <div className='flex flex-col gap-2 px-4 xl:ml-30 text-center md:text-start font-semibold'>
-                        {/* Animated Form Container */}
-                        <motion.div
-                            className='p-16 rounded-lg border border-blue-200 shadow-lg flex flex-col w-full max-w-xl h-auto bg-gray-600 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 -mt-[150px]'
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
-                        >
-                            <h2 className='font-bold text-3xl py-3 text-center text-gray-200'>
-                                Create Portfolio Username 👨‍💻
-                            </h2>
-                            <label htmlFor="Add username" className='py-2 text-gray-400 tracking-tight'>
-                                Add username for your portfolio 👀
-                            </label>
-                            <motion.input
-                                type="text"
-                                id="Add username"
-                                className="input input-bordered w-full py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-pink-300 focus:ring focus:ring-pink-200 transition-all duration-300"
-                                placeholder="Enter your username"
-                                whileFocus={{ scale: 1.05, borderColor: '#e35481' }}
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                            />
-                            <motion.button
-                                className='w-full mt-6 py-3 text-white bg-[#e35481] rounded-lg font-bold tracking-tight'
-                                whileHover={{ scale: 1.05, backgroundColor: '#d43d6e' }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => handleCreate()}
-                            >
-                                Create User
-                            </motion.button>
-                        </motion.div>
-                    </div>
-                </motion.div>
-
-                {/* Right part - Animated Image */}
-                <motion.div
-                    className='flex-1 relative overflow-hidden justify-center items-center hidden md:flex'
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1, ease: 'easeInOut' }}
-                >
-                    <motion.img
-                        src={"/combined.png"}
-                        alt='Portfolio illustration'
-                        className='object-cover opacity-90 pointer-events-none select-none h-full -mt-[110px]'
-                        initial={{ scale: 0.9 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.8, ease: 'easeInOut' }}
-                        whileHover={{ scale: 1.05 }}
+            </div> */}
+            <div className="rain">
+                {/* Generate fewer raindrop divs for decreased frequency */}
+                {[...Array(28)].map((_, index) => (
+                    <div
+                        key={index}
+                        className="rain-drop"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            animationDuration: `${Math.random() * 3 + 4}s`, // Adjust for slower rain
+                            animationDelay: `${Math.random() * 5}s`, // Adjust delay
+                        }}
                     />
-                </motion.div>
+                ))}
             </div>
+
+            <div className='flex h-screen w-full'>
+  {/* Left part */}
+   
+  
+  <motion.div
+    className='flex-1 flex flex-col overflow-hidden relative justify-center items-center z-10 bg-noise '
+    initial={{ x: -100, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 1, ease: 'easeInOut' }}
+  >
+
+    {/* <h1 className='mb-5 text-5xl pt-10 pb-2 px-20  text-gray-300 font-bold tracking-tight font-enrich'>Register your
+    <span className='text-[#5f58e2] mx-2'>Portfolio</span> Here 🖼️</h1> */}
+    {/* Animated Heading */}
+    {/* <motion.h1
+      className='flex  text-5xl pt-10 pb-2 px-20  text-gray-300 font-bold tracking-tight font-enrich'
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: 'easeInOut' }}
+    >
+      Enter your
+      <span className='text-[#e258c9] mx-2'>basic</span> username
+    </motion.h1> */}
+
+    
+
+    {/* Animated Form Container */}
+    <div className='flex flex-col gap-2 px-4 xl:ml-30 text-center md:text-start font-semibold mt-24 '>
+      <motion.div
+        className='p-16 border border-blue-200 shadow-md shadow-white flex flex-col w-full max-w-xl h-auto bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-30 -mt-[150px] rounded-xl'
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.5, ease: 'easeInOut' }}
+      >
+        <h2 className='font-bold text-3xl py-3 text-center text-gray-200 font-enrich'>
+          Create Portfolio Username 👨‍💻
+        </h2>
+        <label htmlFor="Add username" className='py-2 text-gray-400 tracking-tight'>
+          Add username for your portfolio 👀
+        </label>
+        <motion.input
+          type="text"
+          id="Add username"
+          className="input input-bordered w-full py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:border-pink-300 focus:ring focus:ring-pink-200 transition-all duration-300"
+          placeholder="Enter your username"
+          whileFocus={{ scale: 1.05, borderColor: '#e35481' }}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <motion.button
+          className='w-full mt-6 py-3 text-white bg-[#e35481] rounded-lg font-bold tracking-tight'
+          whileHover={{ scale: 1.05, backgroundColor: '#d43d6e' }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => handleCreate()}
+        >
+          Create User
+        </motion.button>
+      </motion.div>
+    </div>
+  </motion.div>
+
+  {/* Right part - Full Image */}
+  {/* <motion.div
+    className='flex-1 relative overflow-hidden justify-center items-center hidden md:flex'
+    initial={{ x: 100, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 1, ease: 'easeInOut' }}
+  >
+    <motion.img
+      src={"/side-img.svg"}
+      alt='Portfolio illustration'
+      className='object-cover opacity-90 pointer-events-none select-none h-full ml-[190px]'
+      initial={{ scale: 0.9 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.8, ease: 'easeInOut' }}
+      whileHover={{ scale: 1.05 }}
+    />
+  </motion.div> */}
+</div>
+
         </>
     );
 };

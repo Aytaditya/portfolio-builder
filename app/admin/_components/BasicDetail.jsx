@@ -10,11 +10,18 @@ import { eq } from 'drizzle-orm';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion } from 'framer-motion';
 import { UserDetailContext } from '../../_context/UserDetailContext'
+import { storage } from '@/utils/firebaseConfig';
+import { uploadBytes } from 'firebase/storage';
+import { ref } from 'firebase/storage';
+import Image from 'next/image';
 
+
+const baseUrl= 'https://firebasestorage.googleapis.com/v0/b/create-ai-4cd98.appspot.com/o'
 const BasicDetail = () => {
     const { user } = useUser();
     const { userDetail, setUserDetail } = useContext(UserDetailContext)
     const [selectedOption, setSelectedOption] = React.useState();
+    const [profileImage, setProfileImage] = React.useState();
 
     let timeoutId;
     const onInputChange = (e, fieldName) => {
@@ -32,11 +39,62 @@ const BasicDetail = () => {
         }, 1000);
     };
 
-
-
-
-
+    const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        
+        // Check if a file is selected
+        if (!file) {
+            toast.error('No file selected', { position: 'top-right' });
+            return;
+        }
+    
+        // Extract file type and create fileName
+        const fileType = file.type.split('/')[1];
+        const fileName = Date.now().toString() + '.' + fileType;
+    
+        // Ensure Firebase storage is initialized correctly
+        const storageRef = ref(storage, fileName);
+    
+        // Upload the file to Firebase storage
+        try {
+            const snapshot = await uploadBytes(storageRef, file);
+            console.log('Uploaded a blob or file!', snapshot);
+            toast.success('Image uploaded successfully', { position: 'top-right' });
+    
+            // Construct the full URL for the uploaded image
+            const imageUrl = `${baseUrl}/${encodeURIComponent(fileName)}?alt=media`;
+    
+            // Update the user profile image in your database
+            const result = await db.update(userInfo)
+                .set({ profileImage: imageUrl })
+                .where(eq(userInfo.email, user?.primaryEmailAddress?.emailAddress));
+    
+            // Set the profileImage state directly with the full URL
+            setProfileImage(imageUrl);
+            console.log(profileImage);
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            toast.error('Failed to upload image', { position: 'top-right' });
+        }
+    };
+    
+ 
     return (
+        <>
+        <div className="rain">
+                {/* Generate fewer raindrop divs for decreased frequency */}
+                {[...Array(28)].map((_, index) => (
+                    <div
+                        key={index}
+                        className="rain-drop"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            animationDuration: `${Math.random() * 3 + 4}s`, // Adjust for slower rain
+                            animationDelay: `${Math.random() * 5}s`, // Adjust delay
+                        }}
+                    />
+                ))}
+            </div>
         <motion.div
             className="p-7 rounded-lg bg-gray-900 my-7 shadow-lg border border-gray-800"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -50,8 +108,25 @@ const BasicDetail = () => {
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.3 }}
                 >
-                    <div className="w-16 h-16 bg-gray-800 rounded-full border-4 border-pink-500 flex items-center justify-center">
-                        <Camera className="text-white " />
+                    <div className="w-16 h-16 bg-gray-700 rounded-full border-4 border-pink-500 flex items-center justify-center cursor-pointer">
+                    {profileImage && (
+                        
+                            <Image src={profileImage} alt="Profile Image" width={40} height={40}/>
+                       
+
+                    )}
+                    {!profileImage && (
+                        <>
+                        <label htmlFor="file-input" className=''>
+                        <Camera className="text-white cursor-pointer " />
+                        </label>
+                        <input type="file" id='file-input' 
+                        style={{display:'none'}}
+                        accept='image/png, image/jpeg, image/jpg, image/gif'
+                        onChange={(e)=>handleFileUpload(e)} />
+                        </>
+                    )}
+                        
                     </div>
                 </motion.div>
                 <motion.input
@@ -93,7 +168,7 @@ const BasicDetail = () => {
                  <input
                      type="text"
                      className="grow bg-transparent text-gray-300 placeholder-gray-400 outline-none focus:outline-none"
-                     placeholder="Location"
+                     placeholder="Enter your location"
                      onChange={(e) => onInputChange(e, 'location')}
                      defaultValue={userDetail?.location}
                  />
@@ -108,7 +183,7 @@ const BasicDetail = () => {
                  <input
                      type="text"
                      className="grow bg-transparent text-gray-300 placeholder-gray-400 outline-none focus:outline-none"
-                     placeholder="Link"
+                     placeholder="Any social media link"
                         onChange={(e) => onInputChange(e, 'link')}
                         defaultValue={userDetail?.link}
                  />
@@ -117,6 +192,7 @@ const BasicDetail = () => {
            )}
 
         </motion.div>
+        </>
     );
 };
 

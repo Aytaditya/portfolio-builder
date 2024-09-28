@@ -45,3 +45,4 @@ export default function RootLayout({ children }) {
    
   );
 }
+// bg-[#0202029d]

@@ -7,5 +7,6 @@ export const userInfo=pgTable('userInfo',{
     username:varchar('username'),
     bio:text('bio'),
     location:varchar('location'),
-    link:varchar('link')
+    link:varchar('link'),
+    profileImage:varchar('profileImage')
 })

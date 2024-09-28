@@ -11,7 +11,7 @@ const testimonials = [
 
 const Marquee = () => {
   return (
-    <div className='bg-[#0b0f1a]'>
+    <div className='bg-[#040507]'>
         <div className='px-40 py-3'>
         <h1 className='text-4xl md:text-6xl font-bold text-center mb-6 font-enrich text-gray-100 mt-[200px]'>Hear from a few of our valued {" "}
           <RotatedText>some</RotatedText> 
