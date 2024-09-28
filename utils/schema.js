@@ -1,4 +1,6 @@
-const {pgTable,serial,varchar,text} = require('drizzle-orm/pg-core');
+//import { integer } from 'drizzle-orm/sqlite-core';
+
+const {pgTable,serial,varchar,text, integer} = require('drizzle-orm/pg-core');
 
 export const userInfo=pgTable('userInfo',{
     id:serial('id').primaryKey(),
@@ -9,4 +11,17 @@ export const userInfo=pgTable('userInfo',{
     location:varchar('location'),
     link:varchar('link'),
     profileImage:varchar('profileImage')
+})
+
+
+export const project=pgTable('project',{
+    id:serial('id').primaryKey(),
+    name:varchar('name'),
+    desc:text('desc'),
+    url:varchar('url').notNull(),
+    logo:varchar('logo'),
+    banner:varchar('banner'),
+    category:varchar('category'),
+    emailRef:varchar('emailRef'),
+    userRef: integer('userRef').notNull().references(() => userInfo.id)
 })

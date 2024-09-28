@@ -81,9 +81,9 @@ const BasicDetail = () => {
  
     return (
         <>
-        <div className="rain">
+        {/* <div className="rain"> */}
                 {/* Generate fewer raindrop divs for decreased frequency */}
-                {[...Array(28)].map((_, index) => (
+                {/* {[...Array(28)].map((_, index) => (
                     <div
                         key={index}
                         className="rain-drop"
@@ -94,7 +94,7 @@ const BasicDetail = () => {
                         }}
                     />
                 ))}
-            </div>
+            </div> */}
         <motion.div
             className="p-7 rounded-lg bg-gray-900 my-7 shadow-lg border border-gray-800"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -110,22 +110,30 @@ const BasicDetail = () => {
                 >
                     <div className="w-16 h-16 bg-gray-700 rounded-full border-4 border-pink-500 flex items-center justify-center cursor-pointer">
                     {profileImage && (
-                        
-                            <Image src={profileImage} alt="Profile Image" width={40} height={40}/>
-                       
+                            <label htmlFor="file-input" className='cursor-pointer'>
+                            <Image src={profileImage} alt="Profile Image" width={40} height={40} />
+                            </label>
 
                     )}
                     {!profileImage && (
                         <>
-                        <label htmlFor="file-input" className=''>
-                        <Camera className="text-white cursor-pointer " />
+                        <label htmlFor="file-input" className='cursor-pointer'>
+                        {!userDetail?.profileImage && (
+                            <Camera className="text-white cursor-pointer " />
+                        )}
+                        {userDetail?.profileImage && (
+                            <Image src={userDetail?.profileImage} alt="Profile Image" width={40} height={40} />
+                        )}
+                        
+                        
                         </label>
-                        <input type="file" id='file-input' 
+                        
+                        </>
+                    )}
+                    <input type="file" id='file-input' 
                         style={{display:'none'}}
                         accept='image/png, image/jpeg, image/jpg, image/gif'
                         onChange={(e)=>handleFileUpload(e)} />
-                        </>
-                    )}
                         
                     </div>
                 </motion.div>
