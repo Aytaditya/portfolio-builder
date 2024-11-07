@@ -159,7 +159,7 @@ const BasicDetail = () => {
             />
 
 
-            <div className='flex gap-2'>
+            <div className='flex gap-2 '>
                 <MapPin className={`h-14 w-14 p-3 mt-5 rounded-md 
                     hover:bg-gray-800 cursor-pointer text-blue-500 ${selectedOption === 'location' && 'bg-gray-800'}`}
                     onClick={() => setSelectedOption('location')} />
@@ -170,7 +170,7 @@ const BasicDetail = () => {
 
 
            {selectedOption === 'location' && (
-             <div className='mt-2'>
+             <div className='mt-3'>
              <label className="input flex items-center gap-3 p-3 border border-gray-400 bg-transparent rounded-lg shadow-sm focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300 transition-all duration-300 ">
                  <MapPin className="h-5 w-5 text-blue-400" />
                  <input
@@ -185,7 +185,7 @@ const BasicDetail = () => {
            )}
 
            {selectedOption==='link' && (
-             <div className='mt-2'>
+             <div className='mt-3'>
              <label className="input flex items-center gap-3 p-3 border border-gray-400 bg-transparent rounded-lg shadow-sm focus-within:border-blue-400 focus-within:ring focus-within:ring-blue-300 transition-all duration-300 ">
                  <Link2 className="h-5 w-5 text-yellow-400" />
                  <input

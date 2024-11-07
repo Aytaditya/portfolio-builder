@@ -6,6 +6,7 @@ import { db } from "@/utils";
 import { project } from "@/utils/schema";
 import { useUser } from '@clerk/nextjs';
 import { UserDetailContext } from '../../_context/UserDetailContext'
+import { Plus } from 'lucide-react';
 
 const AddProject = () => {
     const { user } = useUser();
@@ -15,6 +16,10 @@ const AddProject = () => {
 
     const handleSubmit =async (e) => {
         e.preventDefault();
+        if(!e.target[0].value){
+            toast.error('Please enter a valid url', { position: 'top-right' });
+            return
+        }
         toast.success('Project added successfully', { position: 'top-right' });
         console.log('submitted')
         console.log(e.target[0].value)
@@ -40,7 +45,7 @@ const AddProject = () => {
             {!openUrlInput && (
                 <button className="btn bg-[#e13fd9] uppercase font-bold w-full text-white hover:bg-[#c930c1]"
                 onClick={()=>setOpenUrlInput(true)} 
-                >+ Add a new project</button>
+                ><Plus /> Add a new project</button>
             )}
 
             {openUrlInput && (
@@ -50,7 +55,7 @@ const AddProject = () => {
                     <Link className="text-purple-600" />
                     <input type="url" className="grow bg-transparent text-gray-300 placeholder-gray-400 outline-none focus:outline-none" placeholder="Project url" />
                 </label>
-                <button type="submit" disabled={loading} className="btn bg-[#e13fd9] uppercase font-bold w-full text-white hover:bg-[#c930c1] mt-3">+ Add a new project</button>
+                <button type="submit" disabled={loading} className="btn bg-[#e13fd9] uppercase font-bold w-full text-white hover:bg-[#c930c1] mt-3"><Plus /> Add a new project</button>
             </form>
             )}
         </div>
