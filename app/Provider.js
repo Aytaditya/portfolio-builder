@@ -4,11 +4,10 @@ import { userInfo } from "@/utils/schema"
 import { eq } from "drizzle-orm"
 import { useUser } from "@clerk/nextjs"
 import { useEffect } from "react"
-import { UserDetailContext } from "../_context/UserDetailContext"
+import { UserDetailContext } from "./_context/UserDetailContext"
 import { useState } from "react"
 
-const Provider=({children})=>{
-
+function Provider({children}) {
     const {user}=useUser()
     const [userDetail,setUserDetail]=useState([])
 
@@ -25,13 +24,15 @@ const Provider=({children})=>{
 
         setUserDetail(result[0])
     }
+  return (
+    <UserDetailContext.Provider value={{userDetail,setUserDetail}}>
 
-    return(
-        
-        <div>
-            {children}
-        </div>
-       
-    )
+        {children}
+
+    </UserDetailContext.Provider>
+
+    
+  )
 }
+
 export default Provider

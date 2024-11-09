@@ -81,9 +81,9 @@ const BasicDetail = () => {
  
     return (
         <>
-        {/* <div className="rain"> */}
+        <div className="rain">
                 {/* Generate fewer raindrop divs for decreased frequency */}
-                {/* {[...Array(28)].map((_, index) => (
+                {[...Array(28)].map((_, index) => (
                     <div
                         key={index}
                         className="rain-drop"
@@ -94,7 +94,7 @@ const BasicDetail = () => {
                         }}
                     />
                 ))}
-            </div> */}
+            </div>
         <motion.div
             className="p-7 rounded-lg bg-gray-900 my-7 shadow-lg border border-gray-800"
             initial={{ opacity: 0, scale: 0.95 }}

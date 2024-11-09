@@ -11,6 +11,7 @@ import { project } from '@/utils/schema';
 import { useEffect } from 'react';
 import { Image } from 'lucide-react';
 import ProjectListEdit from './ProjectListEdit';
+import RotatedText from '@/app/components/RotatedText';
 
 
 const FormComponent = () => {
@@ -32,18 +33,18 @@ const FormComponent = () => {
     } 
   }, [user])
 
-  
+  // <span className='text-[#645dee] ml-2 '>Designing</span>
 
   return (
-    <div className='py-12 px-6'>
+    <div className='py-12 px-6 overflow-auto'>
         <motion.h2
             className='text-4xl font-bold text-gray-300 font-enrich tracking-wide'
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-            Start 
-            <span className='text-[#645dee] ml-2 '>Designing</span> your portfolio page
+            Start {" "}
+            <RotatedText>Designing</RotatedText> your portfolio page
             <Image className='w-12 h-12 inline-block mx-2 text-gray-300' />
         </motion.h2>
       <BasicDetail/>

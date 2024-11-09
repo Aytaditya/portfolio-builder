@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from './components/Navbar'
 import { ToastContainer } from "react-toastify";
+import Provider from "./Provider";
 
 
 const geistSans = localFont({
@@ -36,7 +37,9 @@ export default function RootLayout({ children }) {
       >
         <div data-theme="sunset" className="bg-[#0202029d]">
         {/* <Navbar/> */}
+        <Provider>
         {children}
+        </Provider>
         <ToastContainer/>
         </div>
       </body>
