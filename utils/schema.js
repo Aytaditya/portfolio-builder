@@ -10,7 +10,8 @@ export const userInfo = pgTable('userInfo', {
     bio: text('bio'),
     location: varchar('location'),
     link: varchar('link'),
-    profileImage: varchar('profileImage')
+    profileImage: varchar('profileImage'),
+    theme: varchar('theme').default('light')
 });
 
 export const project = pgTable('project', {

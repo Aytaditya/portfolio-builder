@@ -10,6 +10,7 @@ import { useState } from "react"
 function Provider({children}) {
     const {user}=useUser()
     const [userDetail,setUserDetail]=useState([])
+    const [projects, setProjects] = useState([]);
 
     useEffect(()=>{
         if(user){
@@ -25,7 +26,7 @@ function Provider({children}) {
         setUserDetail(result[0])
     }
   return (
-    <UserDetailContext.Provider value={{userDetail,setUserDetail}}>
+    <UserDetailContext.Provider value={{userDetail,setUserDetail,projects,setProjects}}>
 
         {children}
 

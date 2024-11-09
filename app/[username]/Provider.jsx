@@ -1,36 +1,45 @@
 "use client"
-import React from 'react'
-import {db} from '@/utils'
-import { useUser } from '@clerk/nextjs'
-import {useEffect} from 'react'
-import { eq } from 'drizzle-orm'
-import { userInfo } from '@/utils/schema'
+import React, { useContext, useEffect, useState } from 'react';
+import { db } from '@/utils';
+import { useUser } from '@clerk/nextjs';
+import { eq } from 'drizzle-orm';
+import { userInfo } from '@/utils/schema';
+import { UserDetailContext } from '../_context/UserDetailContext';
 
-const Provider = ({children}) => {
+const Provider = ({ children }) => {
+    const { user } = useUser();
+    const { userDetail, setUserDetail,projects,setProjects } = useContext(UserDetailContext);
+    
 
-    const {user}=useUser();
-
-    useEffect(()=>{
-        if(user && user.primaryEmailAddress ){
-            getUserDetails()
+    useEffect(() => {
+        if (user && user.primaryEmailAddress) {
+            getUserDetails();
         }
-    },[user])
+    }, [user]);
 
-    const getUserDetails=async()=>{
-        const result=await db.query.userInfo.findMany({
-            with:{
-                project:true
+    const getUserDetails = async () => {
+        const result = await db.query.userInfo.findMany({
+            with: {
+                project: true,
             },
-            where:eq(userInfo.email,user?.primaryEmailAddress?.emailAddress)
-        })
+            where: eq(userInfo.email, user?.primaryEmailAddress?.emailAddress),
+        });
 
-        console.log(result)
-    }
-  return (
-    <div data-theme="cyberpunk">
-      {children}
-    </div>
-  )
-}
+        setUserDetail(result);
+        console.log(result);
+        setProjects(result[0]?.project || []);
+    };
 
-export default Provider
+    // This useEffect will run whenever `projects` is updated, ensuring it logs the updated state
+    // useEffect(() => {
+    //     console.log('Updated projects:', projects);
+    // }, [projects]);
+
+    return (
+        <div data-theme={userDetail?.theme}>
+            {children}
+        </div>
+    );
+};
+
+export default Provider;
