@@ -10,7 +10,7 @@ const UserDetailInfo = ({ userDetail }) => {
           <img src={userDetail.profileImage} alt='avatar' className='rounded-full h-20 w-20 md:w-[130px] md:h-[130px] border-[3px] border-red-500 ' />
 
           <div className='flex flex-col gap-4 mt-3'>
-            <h2 className='font-bold text-lg md:text-3xl'>{userDetail.name} 🚀</h2>
+            <h2 className='font-bold text-lg md:text-3xl uppercase'>{userDetail.name} 🚀</h2>
             <h2 className='flex gap-1 items-center font-mono text-xs md:text-[15px] mb-2 text-balance ' >
               <MapPin size={25} />
               {userDetail.location}

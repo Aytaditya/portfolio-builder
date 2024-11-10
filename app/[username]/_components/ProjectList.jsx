@@ -9,7 +9,7 @@ const ProjectList = ({ projectInfo = [] }) => {
 
   return (
     <>
-    <h1 className='flex justify-center my-1 mb-3 text-xl font-semibold md:text-3xl'>My Projects 🛠️</h1>
+    <h1 className='flex justify-center  mt-8 md:mt-1  mb-5 text-2xl font-bold md:text-3xl '>My Projects 🛠️</h1>
     <div className=' grid grid-cols-1 md:grid-cols-2 gap-7 '>
       {
         projectInfo.map((item, index) =>
@@ -17,7 +17,7 @@ const ProjectList = ({ projectInfo = [] }) => {
             <div key={index} className="border w-full h-auto shadow-sm rounded-lg p-5 hover:scale-105 transition-all hover:shadow-md cursor-pointer">
               <div className='flex gap-2 items-center  '>
                 <img src={item.logo} alt="logo" className='w-[40px] h-[40px] rounded-full' />
-                <h2 className='font-bold justify-between flex items-center text-lg uppercase tracking-tighter'>{item.name}</h2>
+                <h2 className='font-semibold justify-between flex items-center  text-lg md:text-xl  tracking-tighter md:tracking-tight'>{item.name}</h2>
                
               </div>
               

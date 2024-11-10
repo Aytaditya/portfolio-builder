@@ -11,6 +11,7 @@ function Provider({children}) {
     const {user}=useUser()
     const [userDetail,setUserDetail]=useState([])
     const [projects, setProjects] = useState([]);
+    const [selectedThemeName, setSelectedThemeName] = useState(null)
 
     useEffect(()=>{
         if(user){
@@ -26,7 +27,7 @@ function Provider({children}) {
         setUserDetail(result[0])
     }
   return (
-    <UserDetailContext.Provider value={{userDetail,setUserDetail,projects,setProjects}}>
+    <UserDetailContext.Provider value={{userDetail,setUserDetail,projects,setProjects,selectedThemeName, setSelectedThemeName}}>
 
         {children}
 

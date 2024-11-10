@@ -15,7 +15,7 @@ const SideNav = () => {
             id: 2,
             name: "Styles",
             icon: Brush,
-            path:"/admin/styles"
+            path:"/admin/style"
         },
         {
             id: 3,
