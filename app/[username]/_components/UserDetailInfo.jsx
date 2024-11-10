@@ -1,4 +1,4 @@
-import { MapPin, Globe } from 'lucide-react'
+import { MapPin, Globe, Share } from 'lucide-react'
 import React from 'react'
 
 
@@ -10,12 +10,14 @@ const UserDetailInfo = ({ userDetail }) => {
           <img src={userDetail.profileImage} alt='avatar' className='rounded-full h-20 w-20 md:w-[130px] md:h-[130px] border-[3px] border-red-500 ' />
 
           <div className='flex flex-col gap-4 mt-3'>
-            <h2 className='font-bold text-lg md:text-3xl'>{userDetail.name}</h2>
-            <h2 className='flex gap-1 items-center font-mono'>
-              <MapPin size={33} />
+            <h2 className='font-bold text-lg md:text-3xl'>{userDetail.name} 🚀</h2>
+            <h2 className='flex gap-1 items-center font-mono text-xs md:text-[15px] mb-2 text-balance ' >
+              <MapPin size={25} />
               {userDetail.location}
             </h2>
           </div>
+
+          
         </div>
 
 
@@ -33,10 +35,14 @@ const UserDetailInfo = ({ userDetail }) => {
       <div className='flex'>
         <button className='mt-4 ml-3 btn btn-primary btn-sm font-bold flex'>
           <a href={userDetail.link} target='_blank' className='flex justify-center items-center'>
-            Follow My Socials <span className='inline-block ml-2'><Globe /></span>
+            Follow My Social <span className='inline-block ml-2'><Globe /></span>
           </a>
         </button>
+        <div>
+            <button className='md:hidden btn btn-warning btn-sm mt-4 ml-3'><Share/></button>
+          </div>
       </div>
+
     </div>
   )
 }
