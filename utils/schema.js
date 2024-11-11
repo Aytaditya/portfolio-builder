@@ -28,6 +28,12 @@ export const project = pgTable('project', {
     showGraph: boolean('showGraph')
 });
 
+export const projectClick=pgTable('projectClick', {
+    id: serial('id').primaryKey(),
+    projectRef:integer('projectRef').references(()=>project.id),
+    month:varchar('month'),
+});
+
 
 export const userProjectRelation=relations(userInfo,({many})=>(
     {
