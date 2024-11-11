@@ -9,6 +9,7 @@ import { eq } from 'drizzle-orm'
 import { toast } from 'react-toastify'
 import { Check } from 'lucide-react'
 import 'react-toastify/dist/ReactToastify.css';
+import { PreviewUpdateContext } from '@/app/_context/PreviewUpdateContext'
 
 const themes = [
   { id: "light", colors: ["#7C3AED", "#EC4899", "#06B6D4", "#1F2937"], name: "light" },
@@ -49,6 +50,7 @@ export default function ThemeSelector() {
   const [selectedTheme, setSelectedTheme] = useState(null)
   const [hoveredTheme, setHoveredTheme] = useState(null)
   const { selectedThemeName, setSelectedThemeName } = useContext(UserDetailContext)
+  const {updatePreview,setUpdatePreview}=useContext(PreviewUpdateContext)
   const { user } = useUser()
 
   const handleThemeSelect = async (theme) => {
@@ -60,6 +62,7 @@ export default function ThemeSelector() {
         .where(eq(userInfo.email, user.primaryEmailAddress.emailAddress))
       
       toast.success('Theme updated successfully')
+      setUpdatePreview(updatePreview+1) // this will trigger the iframe to reload
     } catch (error) {
       console.error('Error updating theme:', error)
       toast.error('Failed to update theme')

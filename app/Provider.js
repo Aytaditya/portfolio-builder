@@ -27,7 +27,7 @@ function Provider({children}) {
         setUserDetail(result[0])
     }
   return (
-    <UserDetailContext.Provider value={{userDetail,setUserDetail,projects,setProjects,selectedThemeName, setSelectedThemeName}}>
+    <UserDetailContext.Provider value={{userDetail,setUserDetail,projects,setProjects,selectedThemeName,setSelectedThemeName}}>
 
         {children}
 

@@ -14,12 +14,14 @@ import { storage } from '@/utils/firebaseConfig';
 import { uploadBytes } from 'firebase/storage';
 import { ref } from 'firebase/storage';
 import Image from 'next/image';
+import { PreviewUpdateContext } from '@/app/_context/PreviewUpdateContext';
 
 
 const baseUrl= 'https://firebasestorage.googleapis.com/v0/b/create-ai-4cd98.appspot.com/o'
 const BasicDetail = () => {
     const { user } = useUser();
     const { userDetail, setUserDetail } = useContext(UserDetailContext)
+    const { updatePreview, setUpdatePreview } = useContext(PreviewUpdateContext);
     const [selectedOption, setSelectedOption] = React.useState();
     const [profileImage, setProfileImage] = React.useState();
 
@@ -33,6 +35,7 @@ const BasicDetail = () => {
 
             if (result) {
                 toast.success('Updated successfully', { position: 'top-right' });
+                setUpdatePreview(updatePreview + 1); // to reload mobile preview
             } else {
                 toast.error('Error', { position: 'top-right' });
             }
@@ -72,6 +75,9 @@ const BasicDetail = () => {
             // Set the profileImage state directly with the full URL
             setProfileImage(imageUrl);
             console.log(profileImage);
+
+            setUpdatePreview(updatePreview + 1); // to reload mobile preview
+
         } catch (error) {
             console.error('Error uploading file:', error);
             toast.error('Failed to upload image', { position: 'top-right' });

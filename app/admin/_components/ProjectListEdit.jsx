@@ -9,7 +9,8 @@ import { useUser } from '@clerk/nextjs';
 import { storage } from '@/utils/firebaseConfig';
 import { uploadBytes, ref } from 'firebase/storage';
 import Swal from 'sweetalert2';
-import { Rnd } from 'react-rnd';
+import { useContext } from 'react';
+import { PreviewUpdateContext } from '@/app/_context/PreviewUpdateContext';
 
 const baseUrl = 'https://firebasestorage.googleapis.com/v0/b/create-ai-4cd98.appspot.com/o';
 
@@ -18,6 +19,7 @@ const ProjectListEdit = ({ projects,refreshData }) => {
     const { user } = useUser();
     const [profileImage, setProfileImage] = useState('');
     const timeoutRef = useRef(null);  // Ref for debounce handling
+    const {updatePreview,setUpdatePreview}=useContext(PreviewUpdateContext);
 
     const activeStatusChecked=(value,fieldName,projectId)=>{
         clearTimeout(timeoutRef.current);
@@ -27,6 +29,7 @@ const ProjectListEdit = ({ projects,refreshData }) => {
                 .where(eq(project.id, projectId));
             if(result){
                 toast.success('Updated successfully',{position:'top-right'});
+                setUpdatePreview(updatePreview+1);
             }else{
                 toast.error('Error',{position:'top-right'});
             }
@@ -44,6 +47,7 @@ const ProjectListEdit = ({ projects,refreshData }) => {
 
             if (result) {
                 toast.success('Updated successfully', { position: 'top-right' });
+                setUpdatePreview(updatePreview + 1); // to reload mobile preview
             } else {
                 toast.error('Error', { position: 'top-right' });
             }
@@ -65,6 +69,7 @@ const ProjectListEdit = ({ projects,refreshData }) => {
         try {
             const snapshot = await uploadBytes(storageRef, file);
             toast.success('Image uploaded successfully', { position: 'top-right' });
+            setUpdatePreview(updatePreview+1)// to reload mobile preview
 
             const imageUrl = `${baseUrl}/${encodeURIComponent(fileName)}?alt=media`;
 

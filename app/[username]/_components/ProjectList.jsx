@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'lucide-react';
 import { db } from '@/utils';
 import { project, projectClick, userInfo } from '@/utils/schema';
@@ -9,11 +9,13 @@ import AnalyticChart from './AnalyticChart';
 import { eq, sql } from 'drizzle-orm';
 import { useUser } from '@clerk/nextjs';
 
+
 const ProjectList = ({ projectInfo = [] }) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const {user}=useUser();
   const [projectClickData, setProjectClickData] = useState([]);
+  
 
   const onProjectClick =async (project) => {
     
@@ -24,6 +26,8 @@ const ProjectList = ({ projectInfo = [] }) => {
     })
 
     window.open(project.url, '_blank');
+
+    
   }
 
   useEffect(() => {

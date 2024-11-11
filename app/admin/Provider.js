@@ -6,11 +6,13 @@ import { useUser } from "@clerk/nextjs"
 import { useEffect } from "react"
 import { UserDetailContext } from "../_context/UserDetailContext"
 import { useState } from "react"
+import { PreviewUpdateContext } from "../_context/PreviewUpdateContext"
 
 const Provider=({children})=>{
 
     const {user}=useUser()
     const [userDetail,setUserDetail]=useState([])
+    const [updatePreview,setUpdatePreview]=useState(0)
 
     useEffect(()=>{
         if(user){
@@ -27,11 +29,11 @@ const Provider=({children})=>{
     }
 
     return(
-        
+        <PreviewUpdateContext.Provider value={{updatePreview,setUpdatePreview}} >
         <div>
             {children}
         </div>
-        
+        </PreviewUpdateContext.Provider>
     )
 }
 export default Provider
