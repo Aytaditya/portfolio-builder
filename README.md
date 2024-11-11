@@ -72,6 +72,9 @@ Cr8 AI leverages **Next.js** for building interactive interfaces, **Drizzle ORM*
 - **Clerk Account** (for authentication)
 
 
+![Landing](./readme_images/portfolioimg.png)
+![Landing](./readme_images/portfolioimg2.png)
+
 
 ### Installation
 
@@ -117,6 +120,9 @@ Cr8 AI leverages **Next.js** for building interactive interfaces, **Drizzle ORM*
 4. **Choose a Theme:** Go to the "Themes" section and select from 32 available themes.
 5. **Track Project Views:** View the visit count for each project on your dashboard to see which projects are popular.
 
+![Landing](./readme_images/portfolioimg3.png)
+![Landing](./readme_images/portfolioimg4.png)
+
 ## 🗂️ Project Management
 
 With Cr8 AI, users have complete control over their projects:
@@ -152,6 +158,9 @@ The **Live Mobile Preview** feature lets users view their portfolio in real-time
 ## 🔐 Authentication
 
 User authentication is handled via **Clerk**, ensuring secure and reliable access to each user’s portfolio. Clerk’s robust authentication system allows users to sign up and log in seamlessly, providing a secure environment for creating and managing portfolios.
+
+![Landing](./readme_images/portfolioimg5.png)
+![Landing](./readme_images/portfolioimg6.png)
 
 ## 🤝 Contributing
 
